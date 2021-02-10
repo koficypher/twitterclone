@@ -23,4 +23,30 @@
 </ion-header>
 
 <ion-content >
+   <ion-segment [(ngModel)]="segment" mode="md">
+
+     <ion-segment-button value="home">
+      <ion-label>Home</ion-label>
+     </ion-segment-button>
+
+     <ion-segment-button value="content">
+      <ion-label>cr-content-suggest</ion-label>
+     </ion-segment-button>
+   </ion-segment>
+
+   <ion-slides [options]="opts">
+     <ion-slide *ngFor="let tweet of tweets">
+       <ion-avatar>
+         <img [src]="tweet.img">
+       </ion-avatar>
+     </ion-slide>
+   </ion-slides>
+
+   <div *ngIf="segment === 'home'">
+     <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-tweet>
+   </div>
+
+   <div *ngIf="segment === 'content'">
+
+  </div>
 </ion-content>
